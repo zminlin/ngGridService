@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Grid Sample</title>
+<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+<script src="app.js"></script>
+
+<body ng-app="ngGrid" ng-controller="gridCtrl">
+  <select ng-model='query.type' ng-options="obj.title for obj in searchColumns">
+  <input type="text" placeholder="Search..." ng-model='query.string'>
+  <button ng-click="search()">Search</button>
+  <table>
+                <thead>
+                    <tr>
+                       
+                        <th ng-repeat='column in gridHeader'  ng-class="{true:'',false:'disabled'}[column.sortable]" ng-click="sort()" name="header">{{column.title}}
+                        </th>       
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+                        
+                        <td>{{item.index}}</td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.user}}</td>
+                        <td>{{item.region}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination total-items="items.length" page="uiCurrentPage" max-size="10" boundary-links="true" rotate="false" items-per-page = "numPerPage" on-select-page=changePage(page)></pagination> 
+
+
+</body>
+</html>
