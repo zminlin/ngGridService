@@ -1,0 +1,4 @@
+app.js- ngGridService : the grid service (include search,pagination)
+      - gridCtrl : the sample code for showing ngGridService
+
+index.html - the sample page showing how to using ngGridService
